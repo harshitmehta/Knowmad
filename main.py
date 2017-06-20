@@ -31,40 +31,33 @@ def webhook():
     data = request.get_json()
     log(data)
 
-#    if data['object']=='page':
-#        for entry in data['entry']:
-#            for messaging_event in entry['messaging']:
+    if data['object']=='page':
+        for entry in data['entry']:
+            for messaging_event in entry['messaging']:
                 
                 # Sender and Recipient IDs
-#                sender_id = messaging_event['sender']['id']
-#                recipient_id = messaging_event['recipient']['id']
+                sender_id = messaging_event['sender']['id']
+                recipient_id = messaging_event['recipient']['id']
 
                 #If message is a text or not
-#                if messaging_event.get('message'):
- #                   if 'text' in messaging_event['message']:
-  #                     messaging_text = messaging_event['message']['text']
-   #                 else:
-    #                   messaging_text = 'no text'
+                if messaging_event.get('message'):
+                    if 'text' in messaging_event['message']:
+                        messaging_text = messaging_event['message']['text']
+                    else:
+                        messaging_text = 'no text'
                     
                 #ECHO
                 #response = messaging_text
-#                response = None
- #               entity, value = wit_response(messaging_text)
-  #              print(entity, value)
+                response = None
+                entity, value = wit_response(messaging_text)
+                print(entity, value)
 
-   #             if entity == 'greetings':
-    #                predict()
-     #               response = "Hi! My name is Genie and I am here to help you with your automobile insurance. With the data you provide I will be able to predict your insurance premium. Let us start. Do you have a private vehicle or commercial?"
-      #          elif entity == 'private_commercial':
-       #             response = "Ok. {} it is. Is it a two-wheeler, three-wheeler or a four wheeler?".format(str(value))
-        #        elif entity == 'wheeler':
-         #           response = "Alright, so it is a {0}. Please provide the year of registration.".format(str(value))
-          #      elif entity == 'number':
-           #         response = "Ok so {1} it is.".format(str(value))
-            #    elif entity == None:
-             #       response = "Sorry I did not get that. Please try again."
+                if entity == 'greetings':
+                    response = "Hi! Do you want to know if you are mad?"
+                else:
+                    response = "Sorry I did not get that. Please try again."
 
-              #  bot.send_text_message(sender_id, response)
+    bot.send_text_message(sender_id, response)
 
     return "ok", 200
    
