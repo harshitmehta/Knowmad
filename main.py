@@ -9,7 +9,7 @@ import os, sys
 from flask import Flask, request
 from utils import wit_response
 from pymessenger import Bot
-#from core import predict
+from core import predict
 
 app = Flask(__name__)
 
