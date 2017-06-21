@@ -58,7 +58,7 @@ def webhook():
                     
                 ##ECHO
                 ##response = messaging_text
-                global count
+                #global count
                 response = None
                 entity, value = wit_response(messaging_text)
                 print(entity, value)
@@ -66,8 +66,8 @@ def webhook():
 
                 if entity == 'greetings':
                     response = "Hi, Welcome to Knowmad! We will do a small survey to predict how work related stress could be affecting your mental health. Shall we begin?"
-                    #k = global count
-                    print(count, allval[count])
+                    #global count
+                    #print(count, allval[count])
                 elif entity == 'yes_no' or entity == 'number':
                     if value == 'yes' or value != '':
                         global count
