@@ -30,6 +30,7 @@ def verify():
 def webhook():
     data = request.get_json()
     log(data)
+    messaging_text = 'no text'
 
     if data['object']=='page':
         for entry in data['entry']:
