@@ -102,8 +102,8 @@ def chatbot(txt):
        count = count + 1
        allval
        
-    else:
-        response = "Please enter a valid response."
+   else:
+       response = "Please enter a valid response."
        
            
    return response
