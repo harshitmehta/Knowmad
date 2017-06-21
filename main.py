@@ -59,32 +59,38 @@ def webhook():
                         messaging_text = messaging_event['message']['text']
                     else:
                         messaging_text = 'no text'
+                        
+                response = chatbot(messaging_text)
                     
-                ##ECHO
-                ##response = messaging_text
-                global allval
-                response = None
-                entity, value = wit_response(messaging_text)
-                print(entity, value)
-                allval.append(value)
-
-                if entity == 'greetings':
-                    response = "Hi, Welcome to Knowmad! We will do a small survey to predict how work related stress could be affecting your mental health. Shall we begin?"
-                    #global count
-                    #print(count, allval[count])
-                elif entity == 'yes_no' or entity == 'number':
-                    if value == 'yes' or value != '':
-                        global count, my_ques_series
-                        print(count, "In Question list")
-                        response = my_ques_series[count]
-                        count = count + 1
-                    else:
-                        response = "Okay maybe next time."
+                
 
     bot.send_text_message(sender_id, response)
 
     return "ok", 200
 
+def chatbot(txt):
+    ##ECHO
+   ##response = messaging_text
+   global allval
+   response = None
+   entity, value = wit_response(txt)
+   print(entity, value)
+   allval.append(value)
+
+   if entity == 'greetings':
+       response = "Hi, Welcome to Knowmad! We will do a small survey to predict how work related stress could be affecting your mental health. Shall we begin?"
+       #global count
+       #print(count, allval[count])
+   elif entity == 'yes_no' or entity == 'number':
+       if value == 'yes' or value != '':
+           global count, my_ques_series
+           print(count, "In Question list")
+           response = my_ques_series[count]
+           count = count + 1
+       else:
+           response = "Okay maybe next time."
+           
+    return response
 
 
    
