@@ -82,32 +82,36 @@ def chatbot(txt):
    print(entity, value)
    allval.append(value)
    
-   if len(allval) < 22:
-       if entity == 'greetings':
-           response = "Hi, Welcome to Knowmad! We will do a small survey to predict how work related stress could be affecting your mental health. Shall we begin?"
-           #global count
-           #print(count, allval[count])
-       elif entity == 'yes_no': #or entity == 'number':
-           if value == 'yes': #or value != '':
-               #global my_ques_series
-               print(0, "First in Question list")
-               response = my_ques_series[0]
-           else:
-               response = "Okay maybe next time."
-           
-       elif entity == 'number':
-           #value > -1 and value < 100:
-           global count
-           print(count, " in Question list")
-           response = my_ques_series[count]
-           count = count + 1
-           print(allval)
+   #if len(allval) < 24:
+   if entity == 'greetings':
+       response = "Hi, Welcome to Knowmad! We will do a small survey to predict how work related stress could be affecting your mental health. Shall we begin?"
+       #global count
+       #print(count, allval[count])
+   elif entity == 'yes_no': #or entity == 'number':
+       if value == 'yes': #or value != '':
+           #global my_ques_series
+           print(0, "First in Question list")
+           response = my_ques_series[0]
        else:
-           response = "Please enter a valid response."
-       
-       return response
-   else:
+           response = "Okay maybe next time."
+           
+   elif entity == 'number' and len(allval) < 24:
+       #value > -1 and value < 100:
+       global count
+       print(count, " in Question list")
+       response = my_ques_series[count]
+       count = count + 1
+       print(allval)
+   elif len(allval) == 24:
        print("reached the end!")
+       allval.drop(allval.index[[0,1]])
+       outcome = predict(allval)
+       response = "The outcome is {}".format(str(outcome))
+       
+   return response
+   #else:
+       
+       
 
 
    

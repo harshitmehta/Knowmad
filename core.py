@@ -99,7 +99,7 @@ def predict(user_data):
                                            1})
 
     mapping = {'Yes': 1, 'No': -1, "Don't know": 0,'Not sure': 0, 'Maybe': 0, 'Some of them': 0}
-    three_factor = {'Yes': 1, 'No': -1, 'Not sure': 0}
+    #three_factor = {'Yes': 1, 'No': -1, 'Not sure': 0}
     for col in df.select_dtypes(include=['object']):
         uniques = set(df[col].unique())
         if (uniques == {'Yes', 'No', "Don't know"} or
@@ -118,13 +118,13 @@ def predict(user_data):
 
     del df['Country']
 
-    key_mask = np.random.rand(len(df)) < 0.8
+    #key_mask = np.random.rand(len(df)) < 0.8
 
-    train = df[key_mask]
+    #train = df[key_mask]
 
-    test = df[~key_mask]
+    #test = df[~key_mask]
 
-    x, y = train.drop('treatment', axis=1), train.treatment
+    x, y = df.drop('treatment', axis=1), df.treatment
 
     model = RandomForestClassifier(n_jobs=-1, n_estimators=200, class_weight='balanced')
     scores = cross_val_score(model, x, y, scoring='roc_auc', cv=5)
