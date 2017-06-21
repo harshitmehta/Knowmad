@@ -7,7 +7,7 @@ Created on Wed Jun 21 02:02:22 2017
 
 import os, sys
 from flask import Flask, request
-from utils import wit_response
+from utils import wit_response, convo
 from pymessenger import Bot
 from core import predict
 
@@ -53,10 +53,12 @@ def webhook():
                 print(entity, value)
 
                 if entity == 'greetings':
-                    predict()
                     response = "Hi, Welcome to Knowmad! We will do a small survey to predict how work related stress could be affecting your mental health. Shall we begin?"
-                else:
-                    response = "Sorry I did not get that. Please try again."
+                elif entity == 'yes_no':
+                    if value == 'yes':
+                        convo()
+                    else:
+                        response = "Okay maybe next time."
 
     bot.send_text_message(sender_id, response)
 

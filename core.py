@@ -17,8 +17,8 @@ from sklearn.metrics import accuracy_score
 
 
 
-def predict():
-    #to_predict = user_data
+def predict(user_data):
+    to_predict = user_data
     df = pd.read_csv('survey.csv')
     df.drop(df.columns[[0, 4, 5, 26]], axis=1, inplace=True)
     # Deleting Timestamp, State, self-employed and comments
@@ -155,8 +155,8 @@ def predict():
     #x_test, y_test = test.drop('treatment', axis=1), test.treatment
 
     #Predict Output
-    #predicted= model.predict(to_predict)
-    #return predicted
+    predicted= model.predict(to_predict)
+    return predicted
 
     #pd.crosstab(test['treatment'], predicted)
 
