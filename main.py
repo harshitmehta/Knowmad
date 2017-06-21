@@ -70,7 +70,7 @@ def webhook():
                     print(count, allval[count])
                 elif entity == 'yes_no' or entity == 'number':
                     if value == 'yes' or value != '':
-                        #
+                        global count
                         print(count, "In Question list")
                         response = my_ques_list[count]
                         count = count + 1
