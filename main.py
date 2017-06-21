@@ -17,7 +17,7 @@ app = Flask(__name__)
 PAGE_ACCESS_TOKEN = "EAAbciZAO2HjsBAPKpHW3VZApW7ZANOPfipiXwYnOVTkI1oxZAQYWrFQiJzJo7StubeInHR2gaCP5MODxBaXTS3FxX2O2jfMbXPtilrqd7zjxIx2rqzTY8c41sk0KxYZAaeHWjO8oXsoX4wNQKvc23yiZBgR2qnEYDXOihvWNhkHwZDZD"
 
 bot = Bot(PAGE_ACCESS_TOKEN)
-count = 0
+global_count = 0
 
 @app.route('/', methods=['GET'])
 def verify():
@@ -66,13 +66,13 @@ def webhook():
                 if entity == 'greetings':
                     response = "Hi, Welcome to Knowmad! We will do a small survey to predict how work related stress could be affecting your mental health. Shall we begin?"
                     #count += 1
-                    print(count, allval[count])
+                    print(global_count, allval[global_count])
                 elif entity == 'yes_no' or entity == 'number':
                     if value == 'yes' or value != '':
                         #flag = 1
-                        print(count, "In Question list")
-                        response = my_ques_list[count]
-                        count += 1
+                        print(global_count, "In Question list")
+                        response = my_ques_list[global_count]
+                        global_count += 1
                     else:
                         response = "Okay maybe next time."
 
