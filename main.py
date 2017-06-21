@@ -76,7 +76,7 @@ def chatbot(txt):
    #allval = []
    
    
-   global allval
+   global allval, my_ques_series
    response = None
    entity, value = wit_response(txt)
    print(entity, value)
@@ -88,7 +88,7 @@ def chatbot(txt):
        #print(count, allval[count])
    elif entity == 'yes_no': #or entity == 'number':
        if value == 'yes': #or value != '':
-           global my_ques_series
+           #global my_ques_series
            print(0, "First in Question list")
            response = my_ques_series[0]
        else:
@@ -96,7 +96,7 @@ def chatbot(txt):
            
    elif entity == 'number':
        #value > -1 and value < 100:
-       global count, my_ques_series
+       global count
        print(count, " in Question list")
        response = my_ques_series[count]
        count = count + 1
