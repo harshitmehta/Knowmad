@@ -53,7 +53,8 @@ def webhook():
                 print(entity, value)
 
                 if entity == 'greetings':
-                    response = "Hi! Do you want to know if you are mad?"
+                    predict()
+                    response = "Hi, Welcome to Knowmad! We will do a small survey to predict how work related stress could be affecting your mental health. Shall we begin?"
                 else:
                     response = "Sorry I did not get that. Please try again."
 
