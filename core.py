@@ -8,8 +8,8 @@ Created on Wed Jun 21 01:56:55 2017
 import numpy as np
 import pandas as pd
 #import matplotlib.pyplot as plt
-import seaborn as sns
-from collections import Counter
+#import seaborn as sns
+#from collections import Counter
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.model_selection import cross_val_score
 from sklearn.metrics import accuracy_score
